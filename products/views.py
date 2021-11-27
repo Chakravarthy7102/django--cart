@@ -1,12 +1,12 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Product
 # index product view
 
 
 def index(request):
-    string = 'hello world ,this is my first django application'
-    return HttpResponse(string)
+    all_products = Product.objects.all()
+    return render(request, 'index.html', {'products': all_products})
 
 
 # view for new products
